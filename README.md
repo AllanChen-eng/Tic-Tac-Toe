@@ -6,6 +6,10 @@ Progress:
 - [ ] Playable tic tac toe game on console
 - [ ] Render board contents in HTML file
 - [ ] Set up DOM logic for GUI
+- [ ] Playable game on webpage
+      - Checks if spot is already taken
+      - Announces winner
+      - Prevents game from being played after winner is announced 
 - [ ] Name tags for players
 - [ ] Results/winner popup
 - [ ] Play again/ restart button
