@@ -6,7 +6,7 @@ Progress:
 - [x] Playable tic tac toe game on console
 - [x] Render board contents in HTML file
 - [x] Set up DOM logic for GUI
-- [x] Playable game on webpage
+- [x] Playable game on webpage <br>
        Checks if spot is already taken
        Announces winner
        Prevents game from being played after winner is announced 
