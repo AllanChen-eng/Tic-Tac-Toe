@@ -3,11 +3,15 @@
 Learning Outcomes: Module pattern, encapsulation, DOM manipulation, closure.
 
 Progress:
-- [ ] Playable tic tac toe game on console
-- [ ] Render board contents in HTML file
-- [ ] Set up DOM logic for GUI
+- [x] Playable tic tac toe game on console
+- [x] Render board contents in HTML file
+- [x] Set up DOM logic for GUI
+- [x] Playable game on webpage <br>
+       Checks if spot is already taken <br>
+       Announces winner <br>
+       Prevents game from being played after winner is announced <br>
 - [ ] Name tags for players
-- [ ] Results/winner popup
+- [x] Results/winner popup
 - [ ] Play again/ restart button
 
 Future development:
