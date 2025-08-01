@@ -11,7 +11,7 @@ Progress:
       - Announces winner
       - Prevents game from being played after winner is announced 
 - [ ] Name tags for players
-- [ ] Results/winner popup
+- [x] Results/winner popup
 - [ ] Play again/ restart button
 
 Future development:
