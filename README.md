@@ -9,3 +9,6 @@ Progress:
 - [ ] Name tags for players
 - [ ] Results/winner popup
 - [ ] Play again/ restart button
+
+Future development:
+- [ ] Players can select their own symbols, rather than X and O.
