@@ -1,8 +1,9 @@
+
 //game manager - player1 and player 2, has an array for the gameboard, announce winner
 function createGameManager(player1Name, player2Name) {
   const playerOne = createPlayer(player1Name, "X");
   const playerTwo = createPlayer(player2Name, "O");
-  const gameboard = createGameBoard(3);
+  let gameboard = "";
   const display = displayManager();
   let winner = "";
   let currentPlayer = playerOne;
@@ -36,10 +37,13 @@ function createGameManager(player1Name, player2Name) {
     if (symbol === "O") return "Player Two wins!";
   }
   function startGame() {
+    gameboard = createGameBoard(3);
+    winner = "";
     display.createBoard();
     display.setScript(playRound);
     console.log("Game has started!");
   }
+  display.initializeButtons(startGame);
   startGame();
 }
 
@@ -129,10 +133,9 @@ function displayManager() {
             })
         })
     }
-  const resetBoard = () => {
+  const deleteBoard = () => {
     const board = document.querySelector(".board");
     board.remove();
-    createBoard();
   };
   const createBoard = () => {
     //works
@@ -157,8 +160,15 @@ function displayManager() {
     const box = document.getElementById(`${ID}`);
     box.textContent = player.marker;
   }
+  const initializeButtons = (startGame) =>{
+    const newGame = document.querySelector("#restart");
+    newGame.addEventListener("click",()=>{
+        deleteBoard();
+        startGame();
+    });
+  }
 
-  return {setScript, resetBoard, createBoard, cordinatesToID, markBox};
+  return {setScript, deleteBoard, createBoard, cordinatesToID, markBox, initializeButtons};
 }
 
 //Player controller - takes in console inputs and puts them into the game control to make a move
