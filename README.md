@@ -7,9 +7,9 @@ Progress:
 - [x] Render board contents in HTML file
 - [x] Set up DOM logic for GUI
 - [x] Playable game on webpage <br>
-       Checks if spot is already taken
-       Announces winner
-       Prevents game from being played after winner is announced 
+       Checks if spot is already taken <br>
+       Announces winner <br>
+       Prevents game from being played after winner is announced <br>
 - [ ] Name tags for players
 - [x] Results/winner popup
 - [ ] Play again/ restart button
