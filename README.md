@@ -17,3 +17,4 @@ Progress:
 Future development:
 - [ ] Players can select their own symbols, rather than X and O
 - [ ] Highlight the winning spots
+- [ ] Score tracker
