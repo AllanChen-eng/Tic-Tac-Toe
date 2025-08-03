@@ -10,7 +10,7 @@ Progress:
        Checks if spot is already taken <br>
        Announces winner <br>
        Prevents game from being played after winner is announced <br>
-- [ ] Name tags for players
+- [x] Name tags for players + option to change names
 - [x] Results/winner popup
 - [x] Play again/ restart button
 
