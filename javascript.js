@@ -1,4 +1,3 @@
-
 //game manager - player1 and player 2, has an array for the gameboard, announce winner
 function createGameManager(player1Name, player2Name) {
   const playerOne = createPlayer(player1Name, "X");
@@ -13,13 +12,13 @@ function createGameManager(player1Name, player2Name) {
   }
   function playRound(x, y) {
     console.log("making a move! x is" + x + " " + y);
-    if(winner){
-        alert("Game is over! Please start a new game!");
-        return;
+    if (winner) {
+      alert("Game is over! Please start a new game!");
+      return;
     }
     if (gameboard.makeMove(currentPlayer, x, y)) {
       // if the move is valid, do something
-      display.markBox(currentPlayer,display.cordinatesToID(x,y));
+      display.markBox(currentPlayer, display.cordinatesToID(x, y));
       swapCurrentPlayer();
       gameboard.getBoard();
       console.log(
@@ -27,8 +26,8 @@ function createGameManager(player1Name, player2Name) {
       );
       gameboard.addCounter();
       console.log(gameboard.getCounter());
-      winner = announceWinner(gameboard.checkWinner())
-      if(winner)alert(winner);
+      winner = announceWinner(gameboard.checkWinner());
+      if (winner) alert(winner);
     }
   }
   function announceWinner(symbol) {
@@ -43,6 +42,7 @@ function createGameManager(player1Name, player2Name) {
     display.setScript(playRound);
     console.log("Game has started!");
   }
+  display.setNames(playerOne.playerName, playerTwo.playerName);
   display.initializeButtons(startGame);
   startGame();
 }
@@ -60,7 +60,9 @@ function createGameBoard(size) {
       gameboard[x][i] = "";
     }
   }
-  const getCounter = () => { return counter;}
+  const getCounter = () => {
+    return counter;
+  };
   const addCounter = () => {
     counter++;
   };
@@ -119,20 +121,20 @@ function createGameBoard(size) {
       console.log(row.join(" | "));
     }
   };
-  return { addCounter,getCounter, makeMove, checkWinner, getBoard };
+  return { addCounter, getCounter, makeMove, checkWinner, getBoard };
 }
 
 function displayManager() {
-    const setScript = (playRound) => {
-        const boxes = document.querySelectorAll(".box");
-        boxes.forEach((box) => {
-            box.addEventListener("click", () =>{
-                const index = translateIdtoCordinates(box.id);
-                playRound(index.row,index.col);
-                console.log(index);
-            })
-        })
-    }
+  const setScript = (playRound) => {
+    const boxes = document.querySelectorAll(".box");
+    boxes.forEach((box) => {
+      box.addEventListener("click", () => {
+        const index = translateIdtoCordinates(box.id);
+        playRound(index.row, index.col);
+        console.log(index);
+      });
+    });
+  };
   const deleteBoard = () => {
     const board = document.querySelector(".board");
     board.remove();
@@ -155,20 +157,53 @@ function displayManager() {
     const col = num % 3;
     return { row, col };
   }
-  function cordinatesToID(x,y){ return x*3 + y;}
-  const markBox = (player,ID) =>{
+  function cordinatesToID(x, y) {
+    return x * 3 + y;
+  }
+  const markBox = (player, ID) => {
     const box = document.getElementById(`${ID}`);
     box.textContent = player.marker;
-  }
-  const initializeButtons = (startGame) =>{
+  };
+  const initializeButtons = (startGame) => {
     const newGame = document.querySelector("#restart");
-    newGame.addEventListener("click",()=>{
-        deleteBoard();
-        startGame();
+    const confirmBtnp1 = document.querySelector("#confirmBtnP1");
+    const p1Name = document.querySelector("#set-name-p1");
+    const confirmBtnp2 = document.querySelector("#confirmBtnP2");
+    const p2Name = document.querySelector("#set-name-p2");
+    newGame.addEventListener("click", () => {
+      deleteBoard();
+      startGame();
     });
-  }
+    confirmBtnp1.addEventListener("click",(e) =>{
+        e.preventDefault();
+        setNames(p1Name.value);
+    })
+    confirmBtnp2.addEventListener("click",(e) =>{ 
+        e.preventDefault();
+        setNames(null, p2Name.value);
+    })
+  };
+  const setNames = (name1, name2) => {
+    const p1Tag = document.getElementById("p1Nametag");
+    const p2Tag = document.getElementById("p2Nametag");
+    if (name1 !== null && name1 !== undefined) {
+      p1Tag.textContent = name1 + " (X)";
+    }
 
-  return {setScript, deleteBoard, createBoard, cordinatesToID, markBox, initializeButtons};
+    if (name2 !== null && name2 !== undefined) {
+      p2Tag.textContent = name2 + " (O)";
+    }
+  };
+
+  return {
+    setScript,
+    deleteBoard,
+    createBoard,
+    cordinatesToID,
+    markBox,
+    initializeButtons,
+    setNames,
+  };
 }
 
 //Player controller - takes in console inputs and puts them into the game control to make a move
@@ -182,4 +217,4 @@ setTimeout(() => {
   const player1 = prompt("Player One's Name:");
   const player2 = prompt("Player Two's Name:");
   const game = createGameManager(player1, player2);
-}, 2000);
+}, 500);

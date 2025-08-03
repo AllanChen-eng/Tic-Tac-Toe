@@ -8,15 +8,15 @@
 
   <body>
     <div class="player" id="player-one">
-      <div class="nametag">Player 1 name here <br></div>
+      <div class="nametag" id = "p1Nametag">Player 1</div>
     </div>
     <div id="game-container">
       <div class="title"><h1>Tic-Tac-Toe</h1></div>
       <div class="header">
         <div class="name-change">
           <form action="">
-            <input type="text" id="set-name" placeholder="Player 1 Name" />
-            <button type="submit" id="confirmBtn" value="default">
+            <input type="text" id="set-name-p1" placeholder="Player 1 Name" />
+            <button id="confirmBtnP1" value="default">
               Set Name
             </button>
           </form>
@@ -24,8 +24,8 @@
         <div class="announer">Announcement here</div>
         <div class="name-change">
           <form action="">
-            <input type="text" id="set-name" placeholder="Player 2 Name" />
-            <button type="submit" id="confirmBtn" value="default">
+            <input type="text" id="set-name-p2" placeholder="Player 2 Name" />
+            <button id="confirmBtnP2" value="default">
               Set Name
             </button>
           </form>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="player" id="player-two">
-      <div class="nametag">Player 2 name here <br></div>
+      <div class="nametag" id="p2Nametag">Player 2</div>
     </div>
     <div id="header">Copyright Allan</div>
     <script src="javascript.js"></script>
