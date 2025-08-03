@@ -12,7 +12,7 @@ Progress:
        Prevents game from being played after winner is announced <br>
 - [ ] Name tags for players
 - [x] Results/winner popup
-- [ ] Play again/ restart button
+- [x] Play again/ restart button
 
 Future development:
 - [ ] Players can select their own symbols, rather than X and O
