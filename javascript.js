@@ -11,7 +11,6 @@ function createGameManager(player1Name, player2Name) {
     else currentPlayer = playerOne;
   }
   function playRound(x, y) {
-    console.log("making a move! x is" + x + " " + y);
     if (winner) {
       alert("Game is over! Please start a new game!");
       return;
@@ -25,7 +24,6 @@ function createGameManager(player1Name, player2Name) {
         `A round has been played! It is now ${currentPlayer.playerName}'s turn!`
       );
       gameboard.addCounter();
-      console.log(gameboard.getCounter());
       winner = announceWinner(gameboard.checkWinner());
       if (winner) alert(winner);
     }
@@ -68,7 +66,6 @@ function createGameBoard(size) {
   };
   // making a move
   const makeMove = (player, positionX, positionY) => {
-    console.log(gameboard[positionX][positionY] + "is this");
     if (gameboard[positionX][positionY] === "") {
       gameboard[positionX][positionY] = player.marker;
       return true;
@@ -79,7 +76,6 @@ function createGameBoard(size) {
   };
   // checking for winner
   const checkWinner = () => {
-    console.log("winner's counter:" + counter);
     for (let a = 0; a < size; a++) {
       if (
         gameboard[a][0] === gameboard[a][1] &&
@@ -131,7 +127,6 @@ function displayManager() {
       box.addEventListener("click", () => {
         const index = translateIdtoCordinates(box.id);
         playRound(index.row, index.col);
-        console.log(index);
       });
     });
   };
