@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 
-Learning Outcomes: Module pattern, encapsulation, DOM manipulation, closure.
+Learning Outcomes: Module pattern, encapsulation, DOM manipulation, closure, system design principles, passing functions as arguments.
 
 Progress:
 - [x] Playable tic tac toe game on console
@@ -18,3 +18,4 @@ Future development:
 - [ ] Players can select their own symbols, rather than X and O
 - [ ] Highlight the winning spots
 - [ ] Score tracker
+
