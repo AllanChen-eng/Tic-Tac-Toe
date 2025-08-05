@@ -1,5 +1,7 @@
 # Tic-Tac-Toe
 
+Live Preview: https://allanchen-eng.github.io/Tic-Tac-Toe/
+
 Learning Outcomes: Module pattern, encapsulation, DOM manipulation, closure, system design principles, passing functions as arguments.
 
 Progress:
