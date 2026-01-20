@@ -9,6 +9,7 @@ function createGameManager(player1Name, player2Name) {
   function swapCurrentPlayer() {
     if (currentPlayer === playerOne) currentPlayer = playerTwo;
     else currentPlayer = playerOne;
+    display.makeAnnouncement(currentPlayer.playerName + "'s turn!");
   }
   function playRound(x, y) {
     if (winner) {
@@ -34,6 +35,8 @@ function createGameManager(player1Name, player2Name) {
     if (symbol === "O") return playerTwo.playerName + " won!";
   }
   function startGame() {
+    currentPlayer = playerOne;
+    display.makeAnnouncement(currentPlayer.playerName + "'s turn!");
     gameboard = createGameBoard(3);
     winner = "";
     display.createBoard();
@@ -47,14 +50,22 @@ function createGameManager(player1Name, player2Name) {
     const p2Name = document.querySelector("#set-name-p2");
     confirmBtnp1.addEventListener("click", (e) => {
       e.preventDefault();
-      if (p1Name.value !== null && p1Name.value !== undefined && p1Name.value !== "") {
+      if (
+        p1Name.value !== null &&
+        p1Name.value !== undefined &&
+        p1Name.value !== ""
+      ) {
         display.setNames(p1Name.value, null);
         playerOne.playerName = p1Name.value;
       }
     });
     confirmBtnp2.addEventListener("click", (e) => {
       e.preventDefault();
-      if (p2Name.value !== null && p2Name.value !== undefined && p2Name.value !== "") {
+      if (
+        p2Name.value !== null &&
+        p2Name.value !== undefined &&
+        p2Name.value !== ""
+      ) {
         display.setNames(null, p2Name.value);
         playerTwo.playerName = p2Name.value;
       }
@@ -154,8 +165,8 @@ function displayManager() {
     const board = document.querySelector(".board");
     board.remove();
   };
+  //sets up listeners and html elements of the board
   const createBoard = () => {
-    //works
     const container = document.querySelector(".game");
     const board = document.createElement("div");
     board.classList.add("board");
@@ -196,7 +207,10 @@ function displayManager() {
       p2Tag.textContent = name2 + " (O)";
     }
   };
-
+  const makeAnnouncement = (text) => {
+    const announcement = document.querySelector(".announcer");
+    announcement.textContent = text;
+  };
   return {
     setScript,
     deleteBoard,
@@ -205,6 +219,7 @@ function displayManager() {
     markBox,
     initializeButtons,
     setNames,
+    makeAnnouncement,
   };
 }
 
