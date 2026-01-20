@@ -21,7 +21,7 @@ function createGameManager(player1Name, player2Name) {
       swapCurrentPlayer();
       gameboard.getBoard();
       console.log(
-        `A round has been played! It is now ${currentPlayer.playerName}'s turn!`
+        `A round has been played! It is now ${currentPlayer.playerName}'s turn!`,
       );
       gameboard.addCounter();
       winner = announceWinner(gameboard.checkWinner());
@@ -30,8 +30,8 @@ function createGameManager(player1Name, player2Name) {
   }
   function announceWinner(symbol) {
     if (symbol === "Tie") return "It's a tie!";
-    if (symbol === "X") return "Player One wins!";
-    if (symbol === "O") return "Player Two wins!";
+    if (symbol === "X") return playerOne.playerName + " won!";
+    if (symbol === "O") return playerTwo.playerName + " won!";
   }
   function startGame() {
     gameboard = createGameBoard(3);
@@ -40,6 +40,27 @@ function createGameManager(player1Name, player2Name) {
     display.setScript(playRound);
     console.log("Game has started!");
   }
+  function initializeChangeName() {
+    const confirmBtnp1 = document.querySelector("#confirmBtnP1");
+    const p1Name = document.querySelector("#set-name-p1");
+    const confirmBtnp2 = document.querySelector("#confirmBtnP2");
+    const p2Name = document.querySelector("#set-name-p2");
+    confirmBtnp1.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (p1Name.value !== null && p1Name.value !== undefined && p1Name.value !== "") {
+        display.setNames(p1Name.value, null);
+        playerOne.playerName = p1Name.value;
+      }
+    });
+    confirmBtnp2.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (p2Name.value !== null && p2Name.value !== undefined && p2Name.value !== "") {
+        display.setNames(null, p2Name.value);
+        playerTwo.playerName = p2Name.value;
+      }
+    });
+  }
+  initializeChangeName();
   display.setNames(playerOne.playerName, playerTwo.playerName);
   display.initializeButtons(startGame);
   startGame();
@@ -47,7 +68,6 @@ function createGameManager(player1Name, player2Name) {
 
 // gameboard object - board state, mark board with (player), check for win condition or tie
 function createGameBoard(size) {
-  console.log("Welcome to the game! May the odds be in your favor!");
   //2d array
   let counter = 0;
   const tieCounter = Math.pow(size, 2);
@@ -161,22 +181,10 @@ function displayManager() {
   };
   const initializeButtons = (startGame) => {
     const newGame = document.querySelector("#restart");
-    const confirmBtnp1 = document.querySelector("#confirmBtnP1");
-    const p1Name = document.querySelector("#set-name-p1");
-    const confirmBtnp2 = document.querySelector("#confirmBtnP2");
-    const p2Name = document.querySelector("#set-name-p2");
     newGame.addEventListener("click", () => {
       deleteBoard();
       startGame();
     });
-    confirmBtnp1.addEventListener("click",(e) =>{
-        e.preventDefault();
-        setNames(p1Name.value);
-    })
-    confirmBtnp2.addEventListener("click",(e) =>{ 
-        e.preventDefault();
-        setNames(null, p2Name.value);
-    })
   };
   const setNames = (name1, name2) => {
     const p1Tag = document.getElementById("p1Nametag");
@@ -184,7 +192,6 @@ function displayManager() {
     if (name1 !== null && name1 !== undefined) {
       p1Tag.textContent = name1 + " (X)";
     }
-
     if (name2 !== null && name2 !== undefined) {
       p2Tag.textContent = name2 + " (O)";
     }
@@ -204,7 +211,16 @@ function displayManager() {
 //Player controller - takes in console inputs and puts them into the game control to make a move
 // Player object - if they're X or 0 and their names
 function createPlayer(name, symbol) {
-  const playerName = name;
+  let playerName = name;
+  if (playerName == null || playerName == "") {
+    if (symbol == "X") {
+      playerName = "Player One";
+      console.log("player name has been set to default");
+    }
+    if (symbol == "O") {
+      playerName = "Player Two";
+    }
+  }
   const marker = symbol;
   return { playerName, marker };
 }

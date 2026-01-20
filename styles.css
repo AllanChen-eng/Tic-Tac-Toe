@@ -15,7 +15,7 @@
     grid-template-rows: 1fr;
   }
   #game-container{
-    background-color: lightcoral;
+    background-color: lightgray;
     display: grid;
     grid-template-rows: 50px 50px 5fr 50px;
   }
@@ -38,7 +38,7 @@
     size: 2em;
   }
   .game{
-    background-color: orange;
+    background-color: #E6AD8B;
     display: flex;
     align-items: center;
   }
@@ -52,7 +52,7 @@
   background-color: black;
   }
   .box{
-  background-color: orange;
+  background-color: #E6AD8B;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@
     align-items: center;
   }
   #player-one{
-    background-color: #E6AD8B;
+    background-color: lightcoral;
   }
   #player-two{
     background-color: lightblue;
